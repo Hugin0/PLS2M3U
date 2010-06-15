@@ -27,6 +27,7 @@ def process(file):
 	for entry in pls_entries:
 		output.append( "#EXTINF: %s, %s\n%s\n" % (entry[3], entry[2], entry[1]) )
 	
+	print "Converting %s to %s" % pls_file, m3u_file
 	handle = open(m3u_file, 'w')
 	handle.writelines(output)
 	handle.close
