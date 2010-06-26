@@ -43,7 +43,12 @@ class Playlist:
 			self.__type = 'unknown'
 
 	def get_entries(self):
-		matches = self.entryPLS.findall(self.contents)
+		if self.__type == 'pls':
+			matches = self.entryPLS.findall(self.contents)
+		elif self.__type == 'm3u':
+			matches = self.entryM3U.findall(self.contents)
+		else:
+			matches = None
 
 		return matches
 
