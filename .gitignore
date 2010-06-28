@@ -1,3 +1,4 @@
 *.pyc
 *~
-src/groovesalad.pls
+src/*.pls
+src/*.m3u

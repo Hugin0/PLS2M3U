@@ -13,7 +13,7 @@ class Playlist:
 	playlistPLS = re.compile(r'\[playlist\]', re.IGNORECASE)
 
 	# regular expressions used to find each of the entries.  One each for M3U and PLS formats
-	entryM3U = re.compile(r'^\#EXTINF:(-?\d+),(.*)\n(.+)', re.I)
+	entryM3U = re.compile(r'#EXTINF:\s?(-?\d+),(.*)\n(.+)', re.I)
 	entryPLS = re.compile(r'File(\d+)=(.+)\nTitle\1=(.*)\nLength\1=(-?\d+)', re.I)
 	
 	def __init__(self, file):
@@ -60,8 +60,10 @@ if __name__ == '__main__':
 	
 	playlist = Playlist(test_file)
 
-	entries = playlist.get_entries()
-
 	print "playlist type is", playlist.get_type()
-	for entry in entries:
-		print entry
+
+	entries = playlist.get_entries()
+	if entries:
+		for entry in entries:
+			print entry
+	else: print "No matches"
